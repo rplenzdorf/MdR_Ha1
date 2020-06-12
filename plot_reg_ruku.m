@@ -1,4 +1,4 @@
-function F = plot_reg_ruku(k,l,m,g,k_reg,dt)
+function F = plot_reg_ruku(k,l,m,g,k_reg,M_0,dt)
 
 t_0     = 0;
 t_end   = 100;
@@ -32,7 +32,7 @@ u(1) = 0;
 
 for i = 2:length(t_k)
     
-    u = k_reg*(105-x(1,i-1));
+    u = k_reg*(105-x(1,i-1))+M_0;
     
     k_1     = nichtlin_ungeregelt(x(:,i-1),u,l,m,k,g);
     k_2     = nichtlin_ungeregelt(x(:,i-1) + 1/2 * dt * k_1,u,l,m,k,g);
