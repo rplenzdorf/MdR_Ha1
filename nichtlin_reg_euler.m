@@ -6,7 +6,7 @@ function F = nichtlin_reg_euler(k,l,m,g,k_reg,M_0,dt,plt)
 
     x(:,1)  = [75; 0];
     dx(:,1) = [105-x(1,1),0];
-    u(1) = M_0;
+    u(1) = k_reg*(105-x(1,1))+M_0;
     %Simulation
     for i=2:length(t_k)
         u(i) = k_reg*(105-x(1,i-1))+M_0;

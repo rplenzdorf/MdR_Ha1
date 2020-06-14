@@ -11,7 +11,7 @@ function F = lin_nichtreg_euler(k,l,m,g,k_reg,M_0,dt,plt)
     %Simulation
     for i=2:length(t_k)
         u(i) = M_0;
-        dx(:,i) = dx(:,i-1) + dt * lin_ungeregelt(dx(:,i-1),0,l,m,k,g);
+        dx(:,i) = dx(:,i-1) + dt * lin_ungeregelt(dx(:,i-1),M_0,l,m,k,g);
     end
 
 
@@ -19,9 +19,9 @@ function F = lin_nichtreg_euler(k,l,m,g,k_reg,M_0,dt,plt)
     if plt == 1
         plot(t_k, dx(plt,:)+105,"LineStyle","--")
     elseif plt == 2
-        plot(t_k, dx(plt,:)+105,"LineStyle","--")
+        plot(t_k, dx(plt,:),"LineStyle","--")
     elseif plt == 3
-        plot(t_k, u,"LineStyle","--")
+        plot(t_k, u,"r:")
     end
     grid on
 end
